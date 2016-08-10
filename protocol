@@ -1,0 +1,30 @@
+import Foundation
+protocol pricePerUnit {
+var price:Double{get}
+}
+protocol AmountTotal {
+var Amount:Double{get}
+}
+protocol Type {
+var ty:String{get}
+}
+protocol Total {
+var total:Double{get}
+}
+struct oilPrice : Type,pricePerUnit,AmountTotal,Total{
+var ty: String
+var price: Double
+var Amount: Double
+var total: Double
+
+}
+extension pricePerUnit where Self:AmountTotal{
+func isSum(item:Self) -> Double {
+return self.price * self.Amount
+}
+}
+extension pricePerUnit{
+func usFasterThan(item:pricePerUnit) -> Bool {
+return self.price > item.price
+}
+}
