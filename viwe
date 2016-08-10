@@ -1,0 +1,42 @@
+import UIKit
+class ViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource {
+@available(iOS 2.0, *)
+func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int{
+return 1
+}
+// returns the # of rows in each component..
+@available(iOS 2.0, *)
+func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int{
+return pickkerData.count
+}
+override func viewDidLoad() {
+super.viewDidLoad()
+// Do any additional setup after loading the view, typically from a nib.
+typePikker.dataSource = self
+typePikker.delegate = self
+}
+override func didReceiveMemoryWarning() {
+super.didReceiveMemoryWarning()
+// Dispose of any resources that can be recreated.
+}
+func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?{
+return pickkerData[row]
+}
+func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
+{
+petrolcalc.ty = pickkerData[row]
+}
+let pickkerData = ["Selcet Oil","Pepperoil","Desil","BenZen"]
+var possiblePriceI:[String:Double] = ["BenZen":22.11,"Deseil":10.4,"Pepperoil":50.8]
+var petrolcalc = oilPrice(ty:"BenZen",price: 22,Amount: 10,total: 10)
+@IBOutlet weak var amounttext: UITextField!
+@IBOutlet weak var typePikker: UIPickerView!
+/*@IBAction func Cal(sender: AnyObject) {
+let number = Double(amounttext.text)!
+petrolcalc.Amount = number
+petrolcalc.price = Double(possiblePriceI[petrolcalc.ty]!)
+let value = petrolcalc.
+
+}*/
+@IBOutlet weak var tex: UITextField!
+}
